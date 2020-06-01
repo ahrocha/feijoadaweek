@@ -59,5 +59,57 @@ class Prato
      */
     private $restaurante;
 
+    public function getId() {
+        return $this->id;
+    }
 
+    public function getNome() {
+        return $this->nome;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function getDescricao() {
+        return $this->descricao;
+    }
+
+    public function getVideo() {
+        return $this->video;
+    }
+
+    public function getRestaurante() {
+        return $this->restaurante;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function setNome($nome) {
+        $this->nome = $nome;
+        return $this;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
+        return $this;
+    }
+
+    public function setDescricao($descricao) {
+        $this->descricao = $descricao;
+        return $this;
+    }
+
+    public function setVideo($video) {
+        $this->video = $video;
+        return $this;
+    }
+
+    public function setRestaurante(\Restaurante $restaurante) {
+        $this->restaurante = $restaurante;
+        return $this;
+    }
 }

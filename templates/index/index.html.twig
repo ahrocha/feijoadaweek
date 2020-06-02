@@ -10,21 +10,17 @@
 
 <div class="example-wrapper">
     
+<h1>Feijoada Week </h1>
+
+<p>A primeira Feijoada Week foi um sucesso!</p>
+<p>A segunda edição foi adiada devido ao coronga e assim que uma data for decidida, será informada.</p>
     
     {% for prato in pratos %}
         <h2>{{ prato.getNome|e }} - {{ prato.getRestaurante.getNome|e }} </h2>
+        <h3>{{ prato.getData|date("d/m/Y") }}</h3>
         <p>{{ prato.getDescricao|e }} </p>
         <p>{{ prato.getVideo|raw }} </p>
     {% endfor %}
 
-<!--
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/mnt/workspace/_arley/feijoadaweek/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/mnt/workspace/_arley/feijoadaweek/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-    </ul>
--->
 </div>
 {% endblock %}

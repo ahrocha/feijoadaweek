@@ -59,28 +59,46 @@ class Prato
      */
     private $restaurante;
 
-    public function getId() {
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     */
+    private $data = 'CURRENT_TIMESTAMP';
+
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
-    public function getNome() {
+    public function getNome(): ?string
+    {
         return $this->nome;
     }
 
-    public function getStatus() {
+    public function getStatus(): ?int
+    {
         return $this->status;
     }
 
-    public function getDescricao() {
+    public function getDescricao(): ?string
+    {
         return $this->descricao;
     }
 
-    public function getVideo() {
+    public function getVideo(): ?string
+    {
         return $this->video;
     }
 
-    public function getRestaurante() {
+    public function getRestaurante(): ?Restaurante
+    {
         return $this->restaurante;
+    }
+
+    public function getData(): ?\DateTimeInterface
+    {
+        return $this->data;
     }
 
     public function setId($id) {
@@ -88,28 +106,45 @@ class Prato
         return $this;
     }
 
-    public function setNome($nome) {
+    public function setNome(string $nome): self
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
-    public function setStatus($status) {
+    public function setStatus(int $status): self
+    {
         $this->status = $status;
+
         return $this;
     }
 
-    public function setDescricao($descricao) {
+    public function setDescricao(?string $descricao): self
+    {
         $this->descricao = $descricao;
+
         return $this;
     }
 
-    public function setVideo($video) {
+    public function setVideo(?string $video): self
+    {
         $this->video = $video;
+
         return $this;
     }
 
-    public function setRestaurante(\Restaurante $restaurante) {
+    public function setRestaurante(?Restaurante $restaurante): self
+    {
         $this->restaurante = $restaurante;
+
+        return $this;
+    }
+
+    public function setData(\DateTimeInterface $data): self
+    {
+        $this->data = $data;
+
         return $this;
     }
 }

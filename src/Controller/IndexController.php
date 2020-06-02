@@ -19,17 +19,10 @@ class IndexController extends AbstractController
         }
 
         $repository = $this->getDoctrine()->getRepository(Prato::class);
-        //$pratos = $repository->findAll();
-        $pratos = $repository->findBy(array(), array('id' => 'DESC'),5);
-        
-//        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
-//        $qb->select(['t.id', 't.nome', 't.restaurante'])
-//           ->from('App\Entity\Prato', 't')
-//           ->orderBy('t.id', 'DESC');
-//        $pratos = $qb->getQuery()->getResult();
-//var_dump($pratos);die;
+        $pratos = $repository->findBy(array(), array('id' => 'DESC'),10);
+
         return $this->render('index/index.html.twig', [
-            'controller_name' => 'IndexController',
+            'controller_name' => 'Feijoada Week',
             'pratos' => $pratos
         ]);
     }

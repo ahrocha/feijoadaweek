@@ -41,19 +41,24 @@ class Restaurante
      * @ORM\Column(name="status", type="text", length=255, nullable=false)
      */
     private $status;
-    public function getId() {
+
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
-    public function getNome() {
+    public function getNome(): ?string
+    {
         return $this->nome;
     }
 
-    public function getData(): \DateTime {
+    public function getData(): ?\DateTimeInterface
+    {
         return $this->data;
     }
 
-    public function getStatus() {
+    public function getStatus(): ?string
+    {
         return $this->status;
     }
 
@@ -62,18 +67,24 @@ class Restaurante
         return $this;
     }
 
-    public function setNome($nome) {
+    public function setNome(string $nome): self
+    {
         $this->nome = $nome;
+
         return $this;
     }
 
-    public function setData(\DateTime $data) {
+    public function setData(\DateTimeInterface $data): self
+    {
         $this->data = $data;
+
         return $this;
     }
 
-    public function setStatus($status) {
+    public function setStatus(string $status): self
+    {
         $this->status = $status;
+
         return $this;
     }
 }

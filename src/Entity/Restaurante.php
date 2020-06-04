@@ -42,6 +42,13 @@ class Restaurante
      */
     private $status;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="text", length=255, nullable=true)
+     */
+    private $slug;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -84,6 +91,18 @@ class Restaurante
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

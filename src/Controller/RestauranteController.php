@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Restaurante;
+use App\Entity\Prato;
 
 class RestauranteController extends AbstractController
 {
@@ -19,26 +20,29 @@ class RestauranteController extends AbstractController
         ]);
     }
 
-	/**
-	 * @Route("/restaurante/{id}", name="retaurante_show")
-	 */
-	public function show($id)
-	{
-	    $product = $this->getDoctrine()
-	        ->getRepository(Restaurante::class)
-	        ->find($id);
+    /**
+     * @Route("/restaurante/{slug}", name="retaurante_show")
+     */
+    public function show($slug)
+    {
+        $restaurante = $this->getDoctrine()
+            ->getRepository(Restaurante::class)
+            ->findOneBy(['slug' => $slug]);
 
-	    if (!$product) {
-	        throw $this->createNotFoundException(
-	            'No product found for id '.$id
-	        );
-	    }
+        if (!$restaurante) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+        
+        $repository = $this->getDoctrine()->getRepository(Prato::class);
+        $pratos = $repository->findBy(array('restaurante' => $restaurante->getId()), array('id' => 'DESC'),10);
 
-	    return new Response('Check out this great product: '.$product->getNome());
-
-	    // or render a template
-	    // in the template, print things with {{ product.name }}
-	    // return $this->render('product/show.html.twig', ['product' => $product]);
-	}
+        return $this->render('restaurante/index.html.twig', [
+            'controller_name' => 'Restaurante :: Feijoada Week',
+            'restaurante' => $restaurante,
+            'pratos' => $pratos
+        ]);
+    }
 
 }

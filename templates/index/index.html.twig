@@ -16,15 +16,11 @@
 <p>A segunda edição foi adiada devido ao coronga e assim que uma data for decidida, será informada.</p>
     
     {% for prato in pratos %}
-        <h2>{{ prato.getNome|e }} - {{ prato.getRestaurante.getNome|e }} </h2>
+        <h2>{{ prato.getNome|e }} - <a href="/restaurante/{{ prato.getRestaurante.getSlug|e }}">{{ prato.getRestaurante.getNome|e }}</a></h2>
         <h3>{{ prato.getData|date("d/m/Y") }}</h3>
         <p>{{ prato.getDescricao|raw }} </p>
         <p>{{ prato.getVideo|raw }} </p>
     {% endfor %}
-
-    <h4>Visite também:</h4>
-    <p><a href="https://abelaeobigode.com.br/2020/01/onde-comer-em-pipa/" target="_blank">Onde comer em Pipa</a></p>
-    <p><a href="https://abelaeobigode.com.br/2020/02/onde-comer-em-olinda/" target="_blank">Onde comer em Olinda</p>
     
 </div>
 {% endblock %}

@@ -19,7 +19,7 @@ class IndexController extends AbstractController
         }
 
         $repository = $this->getDoctrine()->getRepository(Prato::class);
-        $pratos = $repository->findBy(array(), array('id' => 'DESC'),10);
+        $pratos = $repository->findBy(array(), array('data' => 'DESC'),10);
 
         return $this->render('index/index.html.twig', [
             'controller_name' => 'Feijoada Week',

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Feijoada Week{% endblock %}
+{% block title %}Restaurante {{ restaurante.getNome|e }} :: Feijoada Week{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,16 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <a href="/">voltar</a>
+    <h1>{{ restaurante.getNome|e }}</h1>
+    <h3>{{ restaurante.getData|date("d/m/Y") }}</h3>
+    
+    {% for prato in pratos %}
+        <h2>{{ prato.getNome|e }}</h2>
+        <h3>{{ prato.getData|date("d/m/Y") }}</h3>
+        <p>{{ prato.getDescricao|raw }} </p>
+        <p>{{ prato.getVideo|raw }} </p>
+    {% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/mnt/workspace/_arley/feijoadaweek/src/Controller/RestauranteController.php'|file_link(0) }}">src/Controller/RestauranteController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/mnt/workspace/_arley/feijoadaweek/templates/restaurante/index.html.twig'|file_link(0) }}">templates/restaurante/index.html.twig</a></code></li>
-    </ul>
 </div>
 {% endblock %}

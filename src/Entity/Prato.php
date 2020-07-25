@@ -50,6 +50,13 @@ class Prato
     private $video;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="foto", type="string", length=500, nullable=true)
+     */
+    private $foto;
+
+    /**
      * @var \Restaurante
      *
      * @ORM\ManyToOne(targetEntity="Restaurante")
@@ -65,6 +72,20 @@ class Prato
      * @ORM\Column(name="data", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
     private $data = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="analise", type="text", length=65535, nullable=true)
+     */
+    private $analise;
+
+    /**
+     * @var float|null
+     *
+     * @ORM\Column(name="nota", type="float", nullable=true)
+     */
+    private $nota;
 
     public function getId(): ?int
     {
@@ -91,6 +112,11 @@ class Prato
         return $this->video;
     }
 
+    public function getFoto(): ?string
+    {
+        return $this->foto;
+    }
+
     public function getRestaurante(): ?Restaurante
     {
         return $this->restaurante;
@@ -99,6 +125,15 @@ class Prato
     public function getData(): ?\DateTimeInterface
     {
         return $this->data;
+    }
+
+    public function getAnalise(): ?string
+    {
+        return $this->analise;
+    }
+
+    public function getNota(): ?float {
+        return $this->nota;
     }
 
     public function setId($id) {
@@ -134,6 +169,13 @@ class Prato
         return $this;
     }
 
+    public function setFoto(?string $foto): self
+    {
+        $this->foto = $foto;
+
+        return $this;
+    }
+
     public function setRestaurante(?Restaurante $restaurante): self
     {
         $this->restaurante = $restaurante;
@@ -145,6 +187,18 @@ class Prato
     {
         $this->data = $data;
 
+        return $this;
+    }
+
+    public function setAnalise(?string $analise): self
+    {
+        $this->analise = $analise;
+        return $this;
+    }
+
+    public function setNota(?float $nota): self
+    {
+        $this->nota = $nota;
         return $this;
     }
 }

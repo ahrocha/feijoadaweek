@@ -25,15 +25,14 @@
 
     {% for prato in pratos %}
         <div class="post-preview">
-          <a href="/restaurante/{{ prato.getRestaurante.getSlug|e }}"">
             <h2 class="post-title">
               {{ prato.getNome|e }} - {{ prato.getRestaurante.getNome|e }}
             </h2>
-            <h3 class="post-subtitle">
+            <p class="post-subtitle">
               {{ prato.getDescricao|raw }}
               <p>{{ prato.getVideo|raw }} </p>
-            </h3>
-          </a>
+              <p>{{ prato.getFoto|raw }} </p>
+            </p>
           <p class="post-meta">Posted by
             <a href="#">Andrey</a>
             {{ prato.getData|date("d/m/Y") }}</p>

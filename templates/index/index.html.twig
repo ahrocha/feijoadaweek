@@ -27,6 +27,7 @@
     {% for prato in pratos %}
         <div class="post-preview">
           <a href="/restaurante/{{ prato.getRestaurante.getSlug|e }}"">
+              {{ prato.getFoto|raw }}
             <h2 class="post-title">
               {{ prato.getNome|e }} - {{ prato.getRestaurante.getNome|e }}
             </h2>

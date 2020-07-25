@@ -1,26 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Feijoada Week{% endblock %}
+{% block title %}A melhor feijoada{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>A primeira Feijoada Week foi um sucesso!</h1>
+            <span class="subheading">A segunda edição foi adiada devido ao coronga e assim que uma data for decidida, será informada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
     
-<h1>Feijoada Week</h1>
+<!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
 
-<p>A primeira Feijoada Week foi um sucesso!</p>
-<p>A segunda edição foi adiada devido ao coronga e assim que uma data for decidida, será informada.</p>
-    
     {% for prato in pratos %}
-        <h2>{{ prato.getNome|e }} - <a href="/restaurante/{{ prato.getRestaurante.getSlug|e }}">{{ prato.getRestaurante.getNome|e }}</a></h2>
-        <h3>{{ prato.getData|date("d/m/Y") }}</h3>
-        <p>{{ prato.getDescricao|raw }} </p>
-        <p>{{ prato.getVideo|raw }} </p>
+        <div class="post-preview">
+          <a href="/restaurante/{{ prato.getRestaurante.getSlug|e }}"">
+              {{ prato.getFoto|raw }}
+            <h2 class="post-title">
+              {{ prato.getNome|e }} - {{ prato.getRestaurante.getNome|e }}
+            </h2>
+          </a>
+            <p class="post-subtitle">
+              {{ prato.getDescricao|raw }}
+            </p>
+          <p class="post-meta">Posted by
+            <a href="#">Andrey</a>
+            {{ prato.getData|date("d/m/Y") }}</p>
+        </div>
+        <hr>
     {% endfor %}
+
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Mais antigos &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
     
 </div>
 {% endblock %}

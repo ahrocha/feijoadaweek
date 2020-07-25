@@ -3,22 +3,52 @@
 {% block title %}Restaurante {{ restaurante.getNome|e }} :: Feijoada Week{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{ restaurante.getNome|e }}</h1>
+            <span class="subheading">{{ restaurante.getData|date("d/m/Y") }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<div class="example-wrapper">
-    <a href="/">voltar</a>
-    <h1>{{ restaurante.getNome|e }}</h1>
-    <h3>{{ restaurante.getData|date("d/m/Y") }}</h3>
-    
+<!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
     {% for prato in pratos %}
-        <h2>{{ prato.getNome|e }}</h2>
-        <h3>{{ prato.getData|date("d/m/Y") }}</h3>
-        <p>{{ prato.getDescricao|raw }} </p>
-        <p>{{ prato.getVideo|raw }} </p>
+        <div class="post-preview">
+            <h2 class="post-title">
+              {{ prato.getNome|e }} - {{ prato.getRestaurante.getNome|e }}
+            </h2>
+            <p class="post-subtitle">
+              {{ prato.getDescricao|raw }}
+              <p>{{ prato.getVideo|raw }} </p>
+              <p>{{ prato.getFoto|raw }} </p>
+            </p>
+          <p class="post-meta">Posted by
+            <a href="#">Andrey</a>
+            {{ prato.getData|date("d/m/Y") }}</p>
+        </div>
+        <hr>
     {% endfor %}
 
-</div>
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="/">Voltar &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+
 {% endblock %}

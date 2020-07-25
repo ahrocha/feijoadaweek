@@ -31,7 +31,7 @@ class RestauranteController extends AbstractController
 
         if (!$restaurante) {
             throw $this->createNotFoundException(
-                'No product found for id '.$id
+                'No product found for id ' . $slug
             );
         }
         

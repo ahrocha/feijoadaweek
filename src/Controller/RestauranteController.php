@@ -21,7 +21,7 @@ class RestauranteController extends AbstractController
     }
 
     /**
-     * @Route("/restaurante/{slug}", name="retaurante_show")
+     * @Route("/restaurante/{slug}", name="restaurante_show")
      */
     public function show($slug)
     {
